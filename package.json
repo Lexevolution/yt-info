@@ -1,0 +1,11 @@
+{
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "typescript": "^5.4.5"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "youtubei.js": "^9.3.0"
+  },
+  "type": "module"
+}
