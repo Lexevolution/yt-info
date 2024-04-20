@@ -1,7 +1,7 @@
 import { Innertube, UniversalCache, YTNodes } from 'youtubei.js';
 import Express from 'express';
 const app = Express();
-const port = 33000;
+const port = 80;
 const yt = await Innertube.create({
     cache: new UniversalCache(false)
 });
