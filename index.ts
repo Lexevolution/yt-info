@@ -18,7 +18,7 @@ app.get('/endcards', async (req, res) => {
                 let resoData: string = "";
                 endcards!.forEach(endcard => {
                     const endcardData = endcard.as(YTNodes.EndscreenElement);
-                    const formattedData = `${endcardData.style}\n${endcardData.title.text}\n${endcardData.endpoint.toURL()}\n${endcardData.image![0].url}\n${endcardData.top}|${endcardData.left}|${endcardData.width}|${endcardData.aspect_ratio}`;
+                    const formattedData = `${endcardData.style}\n${endcardData.title.text}\n${endcardData.endpoint.toURL()}\n${endcardData.image![0].url}\n${endcardData.top}|${endcardData.left}|${endcardData.width}|${endcardData.aspect_ratio}\n${endcardData.start_ms}|${endcardData.end_ms}`;
                     resoData += formattedData + '\n';
                 });
                 res.send(resoData.trimEnd());

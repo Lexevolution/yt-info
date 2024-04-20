@@ -11,16 +11,17 @@ app.get('/endcards', async (req, res) => {
             const vid = await yt.getInfo(req.query.id);
             const endcards = vid.endscreen?.elements;
             if (typeof endcards !== "undefined") {
+                let resoData = "";
                 endcards.forEach(endcard => {
                     const endcardData = endcard.as(YTNodes.EndscreenElement);
-                    const resoData = `${endcardData.style}\n${endcardData.title.text}\n${endcardData.endpoint.toURL()}\n${endcardData.image[0].url}\n${endcardData.top}|${endcardData.left}|${endcardData.width}|${endcardData.aspect_ratio}`;
-                    console.log(resoData);
+                    const formattedData = `${endcardData.style}\n${endcardData.title.text}\n${endcardData.endpoint.toURL()}\n${endcardData.image[0].url}\n${endcardData.top}|${endcardData.left}|${endcardData.width}|${endcardData.aspect_ratio}\n${endcardData.start_ms}|${endcardData.end_ms}`;
+                    resoData += formattedData + '\n';
                 });
+                res.send(resoData.trimEnd());
             }
             else {
                 res.status(404).send("No endcards");
             }
-            res.json(endcards);
         }
         catch (e) {
             if (typeof e === "string") {
